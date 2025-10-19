@@ -1,5 +1,5 @@
 // file: prisma/client.ts
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@/generated/prisma";
 
 // Declare global type to prevent redeclaration during hot reload (for Next.js, etc.)
 const globalForPrisma = globalThis as unknown as {
