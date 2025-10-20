@@ -23,5 +23,5 @@ export const protectedProcedure = baseProcedure.use(async ({ ctx, next }) => {
     });
   }
 
-  return next({ ctx: { ...ctx, auth: session } });
+  return next({ ctx: { ...ctx, session } });
 });
