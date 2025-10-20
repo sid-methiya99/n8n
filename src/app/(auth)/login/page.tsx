@@ -4,9 +4,5 @@ import { requireUnAuth } from "@/lib/auth-utils";
 export default async function Login() {
   await requireUnAuth();
 
-  return (
-    <div className="">
-      <LoginForm />
-    </div>
-  );
+  return <LoginForm />;
 }
