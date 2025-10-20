@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 export default function Home() {
   const trpc = useTRPC();
   const queryClient = useQueryClient();
-  const { data } = useQuery(trpc.getWorkflows.queryOptions());
+  // const { data } = useQuery(trpc.getWorkflows.queryOptions());
   const create = useMutation(
     trpc.createWorkflow.mutationOptions({
       onSuccess: () => {
@@ -15,13 +15,15 @@ export default function Home() {
       },
     }),
   );
+
+  const testAI = useMutation(trpc.testAI.mutationOptions({}));
   return (
     <div className="flex flex-col gap-6 items-center justify-center w-full h-screen">
       protected content
-      <div className="text-black">{JSON.stringify(data, null, 2)}</div>
+      {/* <div className="text-black">{JSON.stringify(data, null, 2)}</div> */}
       <LoginButton />
-      <Button disabled={create.isPending} onClick={() => create.mutate()}>
-        Create workflow
+      <Button disabled={testAI.isPending} onClick={() => testAI.mutate()}>
+        TEST AI
       </Button>
     </div>
   );
