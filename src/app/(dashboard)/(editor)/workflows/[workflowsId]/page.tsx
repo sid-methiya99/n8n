@@ -8,5 +8,5 @@ interface WorkFlowsId {
 export default async function WorkFlowsId({ params }: WorkFlowsId) {
   await requireAuth();
   const { workflowsId } = await params;
-  return <div>CredentialsId: {workflowsId}</div>;
+  return <div>WorkflowsId: {workflowsId}</div>;
 }
