@@ -1,5 +1,5 @@
 import { auth } from "@/lib/auth";
-import { polarClient, polarClient } from "@/lib/polar";
+import { polarClient } from "@/lib/polar";
 import { initTRPC, TRPCError } from "@trpc/server";
 import { headers } from "next/headers";
 import { cache } from "react";
