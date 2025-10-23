@@ -1,5 +1,4 @@
 import { PAGINATION } from "@/config/constant";
-import { PAGES_DIR_ALIAS } from "next/dist/lib/constants";
 import { useEffect, useState } from "react";
 
 interface UseEntitySearchProps<T extends { search: string; page: number }> {
