@@ -1,6 +1,7 @@
 import {
   AlertTriangleIcon,
   Loader2Icon,
+  PackageOpenIcon,
   PlusIcon,
   SearchIcon,
 } from "lucide-react";
@@ -8,7 +9,14 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import React from "react";
 import { Input } from "./ui/input";
-import {} from "@/components/ui/empty";
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty";
 
 type EntityHeaderProps = {
   title: string;
@@ -176,5 +184,27 @@ export const ErrorView = ({ message }: StateViewsProps) => {
         <p className="text-sm text-muted-foreground">{message}</p>
       )}
     </div>
+  );
+};
+
+interface EmptyViewsProps extends StateViewsProps {
+  onNew?: () => void;
+}
+export const EmptyViews = ({ message, onNew }: EmptyViewsProps) => {
+  return (
+    <Empty className="border border-dashed bg-white">
+      <EmptyHeader>
+        <EmptyMedia variant="icon">
+          <PackageOpenIcon />
+        </EmptyMedia>
+      </EmptyHeader>
+      <EmptyTitle>No Items</EmptyTitle>
+      {Boolean(message) && <EmptyDescription>{message}</EmptyDescription>}
+      {Boolean(onNew) && (
+        <EmptyContent>
+          <Button onClick={onNew}>Add Item</Button>
+        </EmptyContent>
+      )}
+    </Empty>
   );
 };
