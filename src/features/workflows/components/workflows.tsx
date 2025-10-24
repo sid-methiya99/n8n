@@ -4,6 +4,8 @@ import {
   EntityHeader,
   EntityPagination,
   EntitySearch,
+  ErrorView,
+  LoadingView,
 } from "@/components/entity-views";
 import {
   useCreateWorkflows,
@@ -95,4 +97,12 @@ export const WorkflowsContainer = ({
       {children}
     </EntityContainer>
   );
+};
+
+export const WorkflowLoading = () => {
+  return <LoadingView message="Loading workflows..." />;
+};
+
+export const WorkflowError = () => {
+  return <ErrorView message="Error loading workflows..." />;
 };

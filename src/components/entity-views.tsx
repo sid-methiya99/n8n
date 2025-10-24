@@ -1,8 +1,14 @@
-import { PlusIcon, SearchIcon } from "lucide-react";
+import {
+  AlertTriangleIcon,
+  Loader2Icon,
+  PlusIcon,
+  SearchIcon,
+} from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import React from "react";
 import { Input } from "./ui/input";
+import {} from "@/components/ui/empty";
 
 type EntityHeaderProps = {
   title: string;
@@ -143,6 +149,32 @@ export const EntityPagination = ({
           Next
         </Button>
       </div>
+    </div>
+  );
+};
+
+interface StateViewsProps {
+  message?: string;
+}
+
+export const LoadingView = ({ message }: StateViewsProps) => {
+  return (
+    <div className="flex justify-center items-center h-full flex-1 flex-col gap-y-4 ">
+      <Loader2Icon className="size-6 animate-spin text-primary" />
+      {Boolean(message) && (
+        <p className="text-sm text-muted-foreground">{message}</p>
+      )}
+    </div>
+  );
+};
+
+export const ErrorView = ({ message }: StateViewsProps) => {
+  return (
+    <div className="flex justify-center items-center h-full flex-1 flex-col gap-y-4 text-primary">
+      <AlertTriangleIcon className="size-6 text-primary" />
+      {Boolean(message) && (
+        <p className="text-sm text-muted-foreground">{message}</p>
+      )}
     </div>
   );
 };

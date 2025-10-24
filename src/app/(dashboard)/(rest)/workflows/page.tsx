@@ -1,4 +1,6 @@
 import {
+  WorkflowError,
+  WorkflowLoading,
   WorkflowsContainer,
   WorkflowsList,
 } from "@/features/workflows/components/workflows";
@@ -20,8 +22,8 @@ export default async function Workflow({ searchParams }: WorkflowProps) {
   return (
     <WorkflowsContainer>
       <HydrateClient>
-        <ErrorBoundary fallback={<p>Error</p>}>
-          <Suspense fallback={<p>Loading...</p>}>
+        <ErrorBoundary fallback={<WorkflowError />}>
+          <Suspense fallback={<WorkflowLoading />}>
             <WorkflowsList />
           </Suspense>
         </ErrorBoundary>
