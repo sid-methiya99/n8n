@@ -1,4 +1,3 @@
-import { prisma } from "@/lib/db";
 import { createTRPCRouter, protectedProcedure } from "../init";
 import { workFlowsRouters } from "@/features/workflows/servers/routers";
 
