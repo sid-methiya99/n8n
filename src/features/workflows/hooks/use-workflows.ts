@@ -46,3 +46,8 @@ export const useDeleteWorkflow = () => {
     }),
   );
 };
+
+export const useSuspenseWorkflow = (id: string) => {
+  const trpc = useTRPC();
+  return useSuspenseQuery(trpc.workflows.getOne.queryOptions({ id }));
+};
