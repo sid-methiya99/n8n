@@ -1,6 +1,7 @@
 "use client";
 
 import { ErrorView, LoadingView } from "@/components/entity-views";
+import { nodeComponents } from "@/config/node-components";
 import { useSuspenseWorkflow } from "@/features/workflows/hooks/use-workflows";
 
 import {
@@ -53,6 +54,7 @@ export const Editor = ({ workflowId }: { workflowId: string }) => {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         fitView
+        nodeTypes={nodeComponents}
         proOptions={{ hideAttribution: true }}
       >
         <Background />
