@@ -10,7 +10,6 @@ import { Button } from "@/components/ui/button";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { SaveIcon } from "lucide-react";
 import Link from "next/link";
-
 import {
   useSuspenseWorkflow,
   useUpdateWorkflowName,
@@ -119,6 +118,7 @@ export const EditorBreadCrumbs = ({ workflowId }: { workflowId: string }) => {
     </Breadcrumb>
   );
 };
+
 export const EditorSaveButton = ({ workflowId }: { workflowId: string }) => {
   return (
     <div className="ml-auto">
