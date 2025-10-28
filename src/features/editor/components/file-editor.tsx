@@ -24,6 +24,7 @@ import type {
 import "@xyflow/react/dist/style.css";
 import { useCallback, useState } from "react";
 import { AddNodeButton } from "./add-node-button";
+import { useWorkflowsParams } from "@/features/workflows/hooks/use-workflows-params";
 
 export const Editor = ({ workflowId }: { workflowId: string }) => {
   const { data: workflow } = useSuspenseWorkflow(workflowId);
