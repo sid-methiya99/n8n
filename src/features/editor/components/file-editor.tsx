@@ -26,7 +26,7 @@ import { useCallback, useState } from "react";
 import { AddNodeButton } from "./add-node-button";
 import { useWorkflowsParams } from "@/features/workflows/hooks/use-workflows-params";
 import { useSetAtom } from "jotai";
-import { editorAtom } from "../store/atoms";
+import { editorAtom } from "../../../features/editor/store/atoms";
 
 export const Editor = ({ workflowId }: { workflowId: string }) => {
   const { data: workflow } = useSuspenseWorkflow(workflowId);
@@ -63,6 +63,11 @@ export const Editor = ({ workflowId }: { workflowId: string }) => {
         onInit={setEditor}
         nodeTypes={nodeComponents}
         proOptions={{ hideAttribution: true }}
+        snapGrid={[10, 10]}
+        snapToGrid
+        panOnScroll
+        panOnDrag={false}
+        selectionOnDrag
       >
         <Background />
         <Controls />
