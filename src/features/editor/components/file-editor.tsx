@@ -25,12 +25,15 @@ import "@xyflow/react/dist/style.css";
 import { useCallback, useState } from "react";
 import { AddNodeButton } from "./add-node-button";
 import { useWorkflowsParams } from "@/features/workflows/hooks/use-workflows-params";
+import { useSetAtom } from "jotai";
+import { editorAtom } from "../store/atoms";
 
 export const Editor = ({ workflowId }: { workflowId: string }) => {
   const { data: workflow } = useSuspenseWorkflow(workflowId);
 
   const [nodes, setNodes] = useState<Node[]>(workflow.nodes);
   const [edges, setEdges] = useState<Edge[]>(workflow.edges);
+  const setEditor = useSetAtom(editorAtom);
 
   const onNodesChange = useCallback(
     (changes: NodeChange[]) =>
@@ -57,6 +60,7 @@ export const Editor = ({ workflowId }: { workflowId: string }) => {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         fitView
+        onInit={setEditor}
         nodeTypes={nodeComponents}
         proOptions={{ hideAttribution: true }}
       >
