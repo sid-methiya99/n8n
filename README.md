@@ -5,7 +5,7 @@ A modern, full-stack workflow automation platform built with Next.js 16, featuri
 ## 🚀 Features
 
 - **Workflow Management**: Create, edit, and manage automated workflows
-- **AI Integration**: Built-in support for OpenAI and Anthropic AI models
+- **AI Integration**: Built-in support for Google Gemini via AI SDK
 - **Authentication**: Secure user authentication with Better Auth
 - **Subscription Management**: Integrated billing with Polar.sh
 - **Real-time Updates**: Live workflow execution and monitoring
@@ -29,8 +29,6 @@ A modern, full-stack workflow automation platform built with Next.js 16, featuri
 - **React Error Boundary** - Declarative error boundaries for React components 
 - **Sonner** - Beautiful toast notifications for React apps
 
-
-
 ### Backend
 - **tRPC** - End-to-end typesafe APIs
 - **Better Auth** - Modern authentication solution
@@ -40,8 +38,7 @@ A modern, full-stack workflow automation platform built with Next.js 16, featuri
 
 ### AI & Integrations
 - **AI SDK** - AI model integration
-- **OpenAI** - GPT models integration
-- **Anthropic** - Claude models integration
+- **Google Gemini** - via `@ai-sdk/google`
 - **Polar.sh** - Subscription and billing management
 
 ### Development Tools
@@ -66,17 +63,7 @@ A modern, full-stack workflow automation platform built with Next.js 16, featuri
    ```bash
    cp .env.example .env.local
    ```
-   
-   Configure the following variables:
-   ```env
-   DATABASE_URL="postgresql://username:password@localhost:5432/n8n"
-   BETTER_AUTH_SECRET="your-secret-key"
-   BETTER_AUTH_URL="http://localhost:3000"
-   POLAR_ACCESS_TOKEN="your-polar-token"
-   POLAR_SUCCESS_URL="http://localhost:3000/dashboard"
-   OPENAI_API_KEY="your-openai-key"
-   ANTHROPIC_API_KEY="your-anthropic-key"
-   ```
+   Fill out the values in `.env.local`. See `.env.example` for all required and optional variables.
 
 4. **Set up the database**
    ```bash
@@ -136,8 +123,6 @@ src/
 - Protected routes
 
 ### AI Integration
-- OpenAI GPT models
-- Anthropic Claude models
 - AI-powered workflow suggestions
 - Natural language workflow creation
 
@@ -147,31 +132,3 @@ src/
 - Usage-based billing
 - Customer portal
 
-## 🚀 Deployment
-
-The application is configured for deployment on Vercel with:
-
-- **Sentry Integration**: Error monitoring and performance tracking
-- **Database**: PostgreSQL (recommended: Supabase, Neon, or PlanetScale)
-- **Environment Variables**: Configure all required environment variables
-- **Build Optimization**: Turbopack for faster builds
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is private and proprietary. All rights reserved.
-
-## 🆘 Support
-
-For support and questions, please open an issue in the repository or contact the development team.
-
----
-
-Built with ❤️ using Next.js, TypeScript, and modern web technologies.
