@@ -21,12 +21,7 @@ import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
-  SelectScrollDownButton,
-  SelectScrollUpButton,
-  SelectSeparator,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -35,9 +30,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import z from "zod";
-import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 import dedent from "dedent";
+
 const formSchema = z.object({
   endpoint: z.url({
     message: "Please enter a valid url",
@@ -45,41 +41,40 @@ const formSchema = z.object({
   method: z.enum(["GET", "POST", "PATCH", "UPDATE", "DELETE"]),
   body: z.string().optional(),
 });
+
+export type HTTPRequestFormValues = z.infer<typeof formSchema>;
+
 interface HttpRequestDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onSubmit: (value: z.infer<typeof formSchema>) => void;
-  defaultEndpoint?: string;
-  defaultMethod?: "GET" | "POST" | "PATCH" | "UPDATE" | "DELETE";
-  defautlBody?: string;
+  defaultValues?: Partial<HTTPRequestFormValues>;
 }
 
 export const HttpRequestDialog = ({
   open,
   onOpenChange,
   onSubmit,
-  defaultEndpoint = "",
-  defaultMethod = "GET",
-  defautlBody = "",
+  defaultValues = {},
 }: HttpRequestDialogProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      endpoint: defaultEndpoint,
-      method: defaultMethod,
-      body: defautlBody,
+      endpoint: defaultValues.endpoint || "",
+      method: defaultValues.method || "GET",
+      body: defaultValues.body || "",
     },
   });
 
   useEffect(() => {
     if (open) {
       form.reset({
-        endpoint: defaultEndpoint,
-        method: defaultMethod,
-        body: defautlBody,
+        endpoint: defaultValues.endpoint || "",
+        method: defaultValues.method || "GET",
+        body: defaultValues.body || "",
       });
     }
-  }, [open, defaultEndpoint, defaultMethod, defautlBody, form]);
+  }, [open, defaultValues, form]);
   const watchMethod = form.watch("method");
   const showBodyField = ["POST", "PUT", "PATCH"].includes(watchMethod);
 
