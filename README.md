@@ -17,7 +17,7 @@ A modern, full-stack workflow automation platform built with Next.js 16, featuri
 
 ### Frontend
 - **Next.js 16** - React framework with App Router
-- **React 19** - Latest React with concurrent features
+- **React 19** - Latest React with concurrent feature
 - **TypeScript** - Type-safe development
 - **Tailwind CSS 4** - Utility-first CSS framework
 - **SHADCN UI** - Accessible component primitives
